@@ -1,0 +1,85 @@
+<!DOCTYPE <!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Page Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
+    <script src="main.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+</head>
+<body>
+    <button id = "start">Begin</button>
+    <div id = "wordDisplay"></div>
+    <h3>Letters already guessed:</h3>
+    <div id = "lettersGuessed"></div>
+    <script type="text/javascript">
+
+        function wordGenerator(){
+            var words = ["china","shanghai","beijing","panda","suzhou", "taiwan","yuyuan"];
+            var randomWord = words[Math.floor(Math.random()*words.length)];
+            
+            var spaces = [];
+            
+            for(var i = 0; i<randomWord.length; i++){
+                var length = spaces.push("_");  
+            }
+           
+           $("#wordDisplay").text(spaces);
+            
+        
+        //User Guesses
+        
+        
+           $(document).keypress(function(event){
+            
+                var theLetter = String.fromCharCode(event.which); //when a keyboard key is pressed the letter will be stored in "theLetter"
+                var wins = 0;
+                for(var i=0; i<randomWord.length; i++){
+
+                    if(theLetter === randomWord[i]){
+
+                        spaces.splice(i, 1, theLetter);
+                        $("#wordDisplay").text(spaces);
+                       
+                        
+                    }
+                    else{
+                  
+                    $("#lettersGuessed").append(" " + theLetter);
+                    }
+                    if(spaces == randomWord){
+                        wins++;
+                        alert("you have "+ wins + " win(s)");
+                    }
+                }  
+          
+              
+           });
+        
+       
+
+        
+
+        
+    };
+    
+
+    /*if(randomeWord === spaces){
+            alert("Congrats, you won!")
+        }
+        else{
+            alert("Sorry, you lost")
+        }*/
+
+    
+    $("#start").on("click", function(){
+            
+        wordGenerator();
+    });
+    
+    </script>
+    
+</body>
+</html>
