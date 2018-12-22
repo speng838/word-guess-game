@@ -8,8 +8,10 @@
     <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
     <script src="main.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <link rel="stylesheet" type="text/css" href=assets/css/style.css>
 </head>
 <body>
+    <img src = "assets/images/suzhou.jpg" width = 900px length = 900px>
     <button id = "start">Begin</button>
     <div id = "wordDisplay"></div>
     <h3>Letters already guessed:</h3>
@@ -19,7 +21,7 @@
         function wordGenerator(){
             var words = ["china","shanghai","beijing","panda","suzhou", "taiwan","yuyuan"];
             var randomWord = words[Math.floor(Math.random()*words.length)];
-            
+           
             var spaces = [];
             
             for(var i = 0; i<randomWord.length; i++){
@@ -33,7 +35,7 @@
         
         
            $(document).keypress(function(event){
-            
+                
                 var theLetter = String.fromCharCode(event.which); //when a keyboard key is pressed the letter will be stored in "theLetter"
                 var wins = 0;
                 for(var i=0; i<randomWord.length; i++){
@@ -45,14 +47,16 @@
                        
                         
                     }
-                    else{
-                  
-                    $("#lettersGuessed").append(" " + theLetter);
-                    }
-                    if(spaces == randomWord){
+                    /*
+                    else if(spaces == randomWord){          //to calculate how many wins so far
                         wins++;
                         alert("you have "+ wins + " win(s)");
+                    }*/
+                    else{
+                        
+                    /*$("#lettersGuessed").append(" " + theLetter);*/
                     }
+                    
                 }  
           
               
